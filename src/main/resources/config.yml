@@ -1,0 +1,175 @@
+# ==============================================================================
+#               VanillaPlusPotions v1.1.0 - Конфигурационный файл
+# ==============================================================================
+
+# Версия конфигурационного файла
+version: "1.1.0"
+
+# Использовать кастомные подсказки (Lore) в стиле ванильного Minecraft через MiniMessage
+use-custom-tooltips: true
+
+# Суффикс уровня II в названии предмета (MiniMessage)
+level-2-suffix: " II"
+
+# Глобальные настройки эффекта магнетизма
+magnetism:
+  action-bar-enabled: true
+  action-bar-message: "<gold>⚡ Магнетизм <yellow>%time%</yellow> <gray>(Радиус: <yellow>%radius%</yellow>м)</gray></gold>"
+  particle-enabled: true
+  particle-type: "WAX_ON" # WAX_ON, SCRAPE, ELECTRIC_SPARK, DUST
+  pull-speed: 0.38
+  tick-rate: 2 # Частота тиков притяжения (каждые 2 тика = 10 раз в сек)
+
+# ==============================================================================
+#                      Настройки зелий и характеристик
+# ==============================================================================
+potions:
+  # ----------------------------------------------------------------------------
+  # Зелье Спешки (Haste) + Дебафф Голода (Hunger)
+  # Ингредиент: Осколок аметиста (AMETHYST_SHARD) + Неловкое зелье
+  # Эффект: Спешка I/II (быстрое копание), дебафф Голод I/II (быстрое истощение)
+  # ----------------------------------------------------------------------------
+  haste:
+    color: "#FFC81E" # Теплый янтарно-золотой
+    durations:
+      base: 3600      # 03:00 (180 сек)
+      extended: 9600  # 08:00 (480 сек)
+      upgraded: 1800  # 01:30 (90 сек)
+    amplifiers:
+      level-1: 0      # Спешка I
+      level-2: 1      # Спешка II
+    # Дебафф быстрого истощения при ускоренном копании
+    secondary-amplifiers:
+      level-1: 0      # Голод I
+      level-2: 1      # Голод II
+    display-name:
+      normal: "<!italic><yellow>Зелье спешки%level_suffix%</yellow>"
+      splash: "<!italic><yellow>Взрывное зелье спешки%level_suffix%</yellow>"
+      lingering: "<!italic><yellow>Оседающее зелье спешки%level_suffix%</yellow>"
+      arrow: "<!italic><yellow>Стрела спешки%level_suffix%</yellow>"
+    lore:
+      - "<!italic><blue>Спешка%level_suffix% (%duration%)</blue>"
+      - "<!italic><red>Голод%level_suffix% (%duration%)</red>"
+
+  # ----------------------------------------------------------------------------
+  # Зелье Стойкости (Resistance) — Нерф A+ (узкое окно паники, без уровня II)
+  # Ингредиент: Щиток броненосца (ARMADILLO_SCUTE) + Неловкое зелье
+  # Эффект: Стойкость I (снижение урона), дебафф Замедление I (скованность)
+  # ----------------------------------------------------------------------------
+  resistance:
+    color: "#99A3B3" # Стальной серо-голубой
+    durations:
+      base: 400       # 00:20 (20 сек)
+      extended: 800   # 00:40 (40 сек)
+      upgraded: 400   # Не используется (усиление отключено)
+    amplifiers:
+      level-1: 0      # Стойкость I
+      level-2: 0      # Не используется
+    # Дебафф скованности движений тяжелой броней
+    secondary-amplifiers:
+      level-1: 0      # Замедление I (0 = Slowness I, 1 = Slowness II)
+    display-name:
+      normal: "<!italic><color:#99A3B3>Зелье стойкости</color>"
+      splash: "<!italic><color:#99A3B3>Взрывное зелье стойкости</color>"
+      lingering: "<!italic><color:#99A3B3>Оседающее зелье стойкости</color>"
+      arrow: "<!italic><color:#99A3B3>Стрела стойкости</color>"
+    lore:
+      - "<!italic><blue>Стойкость (%duration%)</blue>"
+      - "<!italic><red>Замедление (%duration%)</red>"
+
+  # ----------------------------------------------------------------------------
+  # Зелье Слепоты (Blindness)
+  # ----------------------------------------------------------------------------
+  blindness:
+    color: "#1F1F23" # Глубокий темно-чернильный
+    durations:
+      base: 300       # 00:15 (15 сек)
+      extended: 600   # 00:30 (30 сек)
+      upgraded: 300   # Не используется
+    amplifiers:
+      level-1: 0      # Слепота I
+      level-2: 0
+    display-name:
+      normal: "<!italic><dark_gray>Зелье слепоты</dark_gray>"
+      splash: "<!italic><dark_gray>Взрывное зелье слепоты</dark_gray>"
+      lingering: "<!italic><dark_gray>Оседающее зелье слепоты</dark_gray>"
+      arrow: "<!italic><dark_gray>Стрела слепоты</dark_gray>"
+    lore:
+      - "<!italic><red>Слепота (%duration%)</red>"
+
+  # ----------------------------------------------------------------------------
+  # Зелье Магнетизма (Magnetism)
+  # ----------------------------------------------------------------------------
+  magnetism:
+    color: "#B87333" # Медный металлический
+    durations:
+      base: 3600      # 03:00 (180 сек)
+      extended: 9600  # 08:00 (480 сек)
+      upgraded: 1800  # 01:30 (90 сек)
+    radii:
+      level-1: 6.0    # 6 блоков
+      level-2: 10.0   # 10 блоков
+    display-name:
+      normal: "<!italic><color:#B87333>Зелье магнетизма%level_suffix%</color>"
+      splash: "<!italic><color:#B87333>Взрывное зелье магнетизма%level_suffix%</color>"
+      lingering: "<!italic><color:#B87333>Оседающее зелье магнетизма%level_suffix%</color>"
+      arrow: "<!italic><color:#B87333>Стрела магнетизма%level_suffix%</color>"
+    lore:
+      - "<!italic><blue>Магнетизм%level_suffix% (%duration%)</blue>"
+      - "<!italic><gray>Притягивает выпавшие предметы в радиусе %radius% блоков</gray>"
+
+  # ----------------------------------------------------------------------------
+  # Зелье Грации Наутилуса (Nautilus) - Увеличение скорости плавания
+  # Ингредиент: Раковина наутилуса (NAUTILUS_SHELL) + Неловкое зелье
+  # Эффект: Грация дельфина (DOLPHINS_GRACE)
+  # ----------------------------------------------------------------------------
+  nautilus:
+    color: "#00A896" # Океанический бирюзовый
+    durations:
+      base: 600       # 00:30 (30 сек)
+      extended: 1200  # 01:00 (60 сек)
+      upgraded: 600   # Не используется (усиление отключено)
+    amplifiers:
+      level-1: 0      # Грация дельфина I
+      level-2: 0      # Не используется
+    display-name:
+      normal: "<!italic><color:#00A896>Зелье грации наутилуса</color>"
+      splash: "<!italic><color:#00A896>Взрывное зелье грации наутилуса</color>"
+      lingering: "<!italic><color:#00A896>Оседающее зелье грации наутилуса</color>"
+      arrow: "<!italic><color:#00A896>Стрела грации наутилуса</color>"
+    lore:
+      - "<!italic><blue>Грация дельфина (%duration%)</blue>"
+
+  # ----------------------------------------------------------------------------
+  # Зелье Утомления (Mining Fatigue) - Замедление скорости копания
+  # Рецепт инверсии: Зелье спешки (любое) + Приготовленный паучий глаз (FERMENTED_SPIDER_EYE)
+  # Эффект: Утомление I/II (MINING_FATIGUE)
+  # ----------------------------------------------------------------------------
+  mining_fatigue:
+    color: "#4A5443" # Мутный серо-зеленый
+    durations:
+      base: 900       # 00:45 (45 сек)
+      extended: 1800  # 01:30 (90 сек)
+      upgraded: 450   # 00:22 (22.5 сек)
+    amplifiers:
+      level-1: 0      # Утомление I
+      level-2: 1      # Утомление II
+    display-name:
+      normal: "<!italic><color:#4A5443>Зелье утомления%level_suffix%</color>"
+      splash: "<!italic><color:#4A5443>Взрывное зелье утомления%level_suffix%</color>"
+      lingering: "<!italic><color:#4A5443>Оседающее зелье утомления%level_suffix%</color>"
+      arrow: "<!italic><color:#4A5443>Стрела утомления%level_suffix%</color>"
+    lore:
+      - "<!italic><red>Утомление%level_suffix% (%duration%)</red>"
+
+# ==============================================================================
+#                       Системные сообщения плагина
+# ==============================================================================
+messages:
+  prefix: "<dark_gray>[<gold>Vanilla<yellow>+</yellow>Potions</dark_gray>] "
+  reload-success: "<green>Конфигурация успешно перезагружена!</green>"
+  no-permission: "<red>У вас нет прав для выполнения этой команды.</red>"
+  give-success: "<green>Выдано <yellow>%amount%x</yellow> %item% игроку <gold>%player%</gold>.</green>"
+  player-not-found: "<red>Игрок <gold>%player%</gold> не найден или не в сети.</red>"
+  unknown-potion: "<red>Неизвестный тип зелья: <yellow>%type%</yellow>. Доступные: haste, resistance, blindness, magnetism, nautilus, mining_fatigue</red>"
+  usage: "<yellow>Команды VanillaPlusPotions:</yellow>\n<gray>/vpotions give <игрок> <тип> [вариант] [уровень] [удлиненное] [кол-во]</gray>\n<gray>/vpotions reload</gray>\n<gray>/vpotions list</gray>"

@@ -1,0 +1,17 @@
+name: VanillaPlusPotions
+version: '1.1.0'
+main: ru.vanillaplus.potions.VanillaPlusPotions
+api-version: '1.21'
+author: Alexsey
+description: Vanilla+ Potions (Haste, Resistance, Blindness, Magnetism, Nautilus, Mining Fatigue) for Purpur 1.21.1
+
+commands:
+  vpotions:
+    description: Main command for VanillaPlusPotions
+    permission: vanillapluspotions.admin
+    usage: /<command> [give|reload|list]
+
+permissions:
+  vanillapluspotions.admin:
+    description: Allows using admin commands for VanillaPlusPotions
+    default: op
